@@ -8,6 +8,8 @@ public class Player_Movement_Controls : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject rotationPoint;
 
+    [Space(20)]
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
 
     private float moveInputX;
