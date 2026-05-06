@@ -12,6 +12,8 @@ public class Enemy_Behaviour : MonoBehaviour
     public Image healthBar; // Reference to the health bar UI element
     private float health;
 
+    private GameObject player; // Reference to the player GameObject
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -22,11 +24,20 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             healthBar.fillAmount = health / health;
         }
+
+        // Find the player GameObject by tag
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (player != null)
+        {
+            // Move towards the player
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            transform.Translate(direction * speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 8327369594502136868}
   - component: {fileID: 4883714185774709306}
   - component: {fileID: 7294699775007081533}
+  - component: {fileID: 1955610860941715703}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -390,3 +391,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player_Combat_Controls
   bulletPrefab: {fileID: 9110963164366917175, guid: 322a4ccd6ccd32648a3e7ae61e19fb78, type: 3}
   firepoint: {fileID: 7152210716807680205}
+--- !u!114 &1955610860941715703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7344652175691721785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f54102b0ac1a294f84aeae2b4008928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Behaviour
