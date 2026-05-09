@@ -11,6 +11,7 @@ public class Player_Movement_Controls : MonoBehaviour
     [Space(20)]
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    private Vector2 mousePos;
 
     private float moveInputX;
     private float moveInputY;
@@ -41,11 +42,35 @@ public class Player_Movement_Controls : MonoBehaviour
     //with mouse or right joystick
     public void Aim(InputAction.CallbackContext context)
     {
-        Vector2 aimInput = context.ReadValue<Vector2>();
-        // Calculate the angle between the player and the aim input
-        float angle = Mathf.Atan2(aimInput.y, aimInput.x) * Mathf.Rad2Deg;
-        // Rotate the weapon in the direction of the aim input
-        rotationPoint.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        if (DeviceCheck(context.control.device))
+        {
+            Vector2 aimInput = context.ReadValue<Vector2>();
+            // Calculate the angle between the player and the aim input
+            float angle = Mathf.Atan2(aimInput.y, aimInput.x) * Mathf.Rad2Deg;
+            // Rotate the weapon in the direction of the aim input
+            rotationPoint.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
+        else
+        {
+            mousePos = context.ReadValue<Vector2>();
+            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.nearClipPlane));
+            Vector2 direction = (worldMousePos - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rotationPoint.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
+    }
+
+    public bool DeviceCheck(InputDevice device)
+    {
+        // Check if the device is a gamepad
+        if (device is Gamepad)
+        {
+            // If it's a gamepad, we can use the left stick for movement
+            return true;
+        }
+
+        // If it's not a gamepad, we can use the keyboard
+        return false;
     }
 
     #endregion Player Input Methods
