@@ -6,6 +6,8 @@ public class Enemy_Behaviour : MonoBehaviour
     [Header("Enemy Settings")]
     public float speed = 5f; // Speed at which the enemy moves
 
+    private Rigidbody2D rb; // Reference to the Rigidbody2D component
+
     [Header("Enemy Stats")]
     public Enemy_Stats stats;
 
@@ -18,6 +20,7 @@ public class Enemy_Behaviour : MonoBehaviour
     private void Start()
     {
         health = stats.health;
+        rb = GetComponent<Rigidbody2D>();
 
         // Initialize the health bar to full health
         if (healthBar != null)
@@ -36,7 +39,8 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             // Move towards the player
             Vector2 direction = (player.transform.position - transform.position).normalized;
-            transform.Translate(direction * speed * Time.deltaTime);
+
+            rb.linearVelocity = direction * speed;
         }
     }
 

@@ -136,6 +136,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9e22cab2-9eec-4b26-b213-2df26fed7e64",
+                    "path": "<Mouse>/radius",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "eb1e1b0c-b188-4616-8088-57b183a99a10",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
